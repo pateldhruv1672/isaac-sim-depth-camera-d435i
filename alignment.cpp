@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright(c) 2017 RealSense, Inc. All Rights Reserved.
+// Modified 2026 by Dhruv Patel; see NOTICE for the scope of modifications.
 // Zero-distortion, parallel-optical-axis specialization of librealsense align.cpp.
 // Same corner projection, integer rounding, rectangular footprint and nearest-depth rule.
 #include <algorithm>

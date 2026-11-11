@@ -140,3 +140,14 @@ remaining sensor-domain or downstream task gap.
 | `test_model.py` | Standalone plane tests of the depth model |
 | `rviz.sh`, `camera.rviz` | RViz view of RGB, depth and the colored cloud |
 | `fastdds.xml` | Shared-memory transport sized for full-resolution RGB-D and clouds |
+
+## License
+
+This project's code is licensed under the [Apache License 2.0](LICENSE).
+Anyone may use, modify and redistribute it for education, research and commercial
+purposes, subject to the license's conditions, including retaining required notices.
+This is not an education-only or non-commercial license.
+
+See [NOTICE](NOTICE) for RealSense alignment attribution. NVIDIA Isaac Sim and other
+external dependencies retain their own licenses; this repository does not relicense
+or redistribute those products. The simulation is provided without warranty.

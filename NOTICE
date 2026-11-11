@@ -1,0 +1,12 @@
+Isaac Sim depth camera: Intel RealSense D435i
+Copyright 2026 Dhruv Patel
+
+The alignment.cpp implementation is a modified, zero-distortion,
+parallel-optical-axis specialization of the alignment algorithm from librealsense:
+https://github.com/realsenseai/librealsense/blob/master/src/proc/align.cpp
+Copyright(c) 2017 RealSense, Inc. All Rights Reserved.
+Licensed under the Apache License, Version 2.0.
+
+Modifications replace SDK frame abstractions with a standalone C ABI and specialize
+projection to rectified pinhole cameras with a horizontal translation. No RealSense
+SDK binaries, Intel/RealSense firmware, or NVIDIA Isaac Sim binaries are distributed.
