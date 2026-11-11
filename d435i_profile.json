@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "name": "D435i documentation-informed nominal 848x480",
+  "width": 848,
+  "height": 480,
+  "requested_fps": 15,
+  "depth_unit_m": 0.001,
+  "stereo_baseline_m": 0.05,
+  "depth_hfov_deg": 87.0,
+  "color_hfov_deg": 69.0,
+  "min_depth_m": 0.195,
+  "max_depth_m": 10.0,
+  "rgb_to_depth_offset_m": 0.015,
+  "disparity_step_px": 0.03125,
+  "reference_disparity_rms_px": 0.08,
+  "assumed_temporal_disparity_sigma_px": 0.03,
+  "visibility_tolerance_m": 0.003,
+  "visibility_relative_tolerance": 0.002,
+  "default_observation_mode": "documented",
+  "default_cloud_stride": 1,
+  "provenance": {
+    "documented": [
+      "50 mm baseline",
+      "848x480 supported and recommended by tuning guide",
+      "87 degree HD depth FOV and 69 degree color FOV, subject to lens tolerances",
+      "195 mm min-Z at 848x480 per rev021 table4-11",
+      "1 mm default depth units",
+      "B*f/Z invalid left-band relationship"
+    ],
+    "reference_not_universal": [
+      "1/32 pixel disparity precision example from subpixel white paper",
+      "0.08 pixel subpixel RMS used in manufacturer example curves, NOT an all-scene or all-device calibration"
+    ],
+    "derived": [
+      "Centered nominal rectified intrinsics from horizontal FOV; square pixels imply vertical FOV near, not exactly equal to, rounded table values",
+      "Distance-dependent depth error from Z=f*B/disparity"
+    ],
+    "assumed": [
+      "15 mm RGB-to-left-depth offset, parallel axes, zero rectified distortion",
+      "Centered principal point; per-device factory calibration unavailable",
+      "Spatial correlation shape and temporal sigma=0.03 px are tunable engineering assumptions; combined disparity RMS=0.08 px",
+      "Geometry visibility threshold 3 mm + 0.2% of Z",
+      "10 m application output cutoff, not a guaranteed usable range",
+      "15 Hz simulation request and full-resolution point cloud are application selections, not achieved hardware timings"
+    ],
+    "not_modeled": [
+      "D4 proprietary matching/confidence logic",
+      "Projected IR dot pattern, speckle, exposure response and material-specific failure probabilities",
+      "Rolling-shutter RGB and real device transport latency",
+      "IMU/IR streams and per-robot mounting calibration",
+      "Depth preset, A-factor nonlinearities, temperature drift and factory calibration errors"
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://realsenseai.com/wp-content/uploads/2025/09/Intel-RealSense-D400-Series-Datasheet-October-2025.pdf",
+      "title": "RealSense D400 family datasheet rev021 October2025",
+      "pages": [
+        67,
+        75,
+        76,
+        82,
+        83,
+        84,
+        85,
+        86
+      ]
+    },
+    {
+      "url": "https://dev.realsenseai.com/docs/tuning-depth-cameras-for-best-performance/",
+      "title": "Tuning depth cameras"
+    },
+    {
+      "url": "https://dev.realsenseai.com/docs/white-paper-subpixel-linearity-improvement-for-intel-realsense-depth-cameras/",
+      "title": "Subpixel linearity"
+    },
+    {
+      "url": "https://dev.realsenseai.com/docs/post-processing-filters/",
+      "title": "SDK postprocessing"
+    }
+  ]
+}

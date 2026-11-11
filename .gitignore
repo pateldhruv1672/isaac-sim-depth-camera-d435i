@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+libalignment.so
+*.log
+*.npy
+*.png
+status.json
+validation.json
+model-unit-tests.json
+!results/*.json
+*_pid.json
+scene.usda
+backups/

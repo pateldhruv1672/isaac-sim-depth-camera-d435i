@@ -1,0 +1,43 @@
+{
+  "plane_tests": [
+    {
+      "z_m": 0.5,
+      "rms_m": 0.0009124206134577384,
+      "linearized_reference_rms_m": 0.0008952495912404523,
+      "theoretical_left_band_px": 45,
+      "first_column_valid": 0,
+      "model_ms_per_frame": 17.586025991477072,
+      "passed": true
+    },
+    {
+      "z_m": 1.0,
+      "rms_m": 0.0036013014915097594,
+      "linearized_reference_rms_m": 0.003580998364961809,
+      "theoretical_left_band_px": 23,
+      "first_column_valid": 0,
+      "model_ms_per_frame": 20.822519378270954,
+      "passed": true
+    },
+    {
+      "z_m": 2.0,
+      "rms_m": 0.014412670334220081,
+      "linearized_reference_rms_m": 0.014323993459847237,
+      "theoretical_left_band_px": 12,
+      "first_column_valid": 0,
+      "model_ms_per_frame": 16.87685726210475,
+      "passed": true
+    },
+    {
+      "z_m": 4.0,
+      "rms_m": 0.05771302524864729,
+      "linearized_reference_rms_m": 0.05729597383938895,
+      "theoretical_left_band_px": 6,
+      "first_column_valid": 0,
+      "model_ms_per_frame": 15.665884013287723,
+      "passed": true
+    }
+  ],
+  "min_z_rejects_180mm": true,
+  "clean_mode_1m_exact": true,
+  "passed": true
+}

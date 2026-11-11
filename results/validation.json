@@ -1,0 +1,103 @@
+{
+  "profile": "D435i documentation-informed nominal 848x480",
+  "topics_received": [
+    "ai",
+    "aligned",
+    "ci",
+    "depth",
+    "di",
+    "points",
+    "rgb",
+    "tf",
+    "truth"
+  ],
+  "rates_hz": {
+    "rgb": 10.7,
+    "depth": 10.7,
+    "aligned": 10.7,
+    "ci": 10.7,
+    "di": 10.7,
+    "ai": 10.7,
+    "truth": 10.7,
+    "points": 10.71
+  },
+  "checks": {
+    "all_streams_received": true,
+    "metric_depth": true,
+    "depth_size": true,
+    "stereo_invalid_left_band": true,
+    "observation_is_not_perfect_truth": true,
+    "usable_but_incomplete_depth": true,
+    "clean_truth_separate": true,
+    "off_center_geometry": true,
+    "projected_geometry": true,
+    "rgb_image": true,
+    "camera_info": true,
+    "full_resolution_cloud": true,
+    "cloud_uses_observation_not_truth": true,
+    "live_rgb_motion": true,
+    "live_depth_frames": true,
+    "paired_timestamps": true,
+    "registered_depth_usable": true,
+    "rgb_delivery_rate": true,
+    "depth_delivery_rate": true,
+    "points_delivery_rate": true,
+    "truth_delivery_rate": true
+  },
+  "depth": {
+    "encoding": "16UC1",
+    "shape": [
+      480,
+      848
+    ],
+    "center_patch_median_mm": 1000.0,
+    "center_patch_rms_vs_1m_mm": 3.4895080837657715,
+    "valid_fraction": 0.9767172759433962,
+    "left_column_valid_pixels": 0
+  },
+  "truth": {
+    "encoding": "32FC1",
+    "center_m": 1.0,
+    "blue_box_m": 1.1900001764297485,
+    "green_box_m": 1.2899999618530273,
+    "center_target_width_px": 126,
+    "expected_width_px": 125.10477647335587
+  },
+  "depth_K": [
+    446.80277311912806,
+    0.0,
+    424.0,
+    0.0,
+    446.80277311912806,
+    240.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "cloud": {
+    "width": 848,
+    "height": 480,
+    "points": 407040,
+    "finite_points": 397563,
+    "frame": "camera_depth_optical_frame",
+    "max_z_vs_observation_error_m": 0.0
+  },
+  "unique_frames": {
+    "rgb": 161,
+    "depth": 161
+  },
+  "matched_rgb_depth_stamps": 161,
+  "aligned_valid_fraction": 0.9830704599056603,
+  "counts": {
+    "rgb": 161,
+    "depth": 161,
+    "aligned": 161,
+    "ci": 161,
+    "di": 161,
+    "ai": 161,
+    "truth": 161,
+    "points": 161,
+    "tf": 1
+  },
+  "passed": true
+}
