@@ -11,3 +11,6 @@ model-unit-tests.json
 *_pid.json
 scene.usda
 backups/
+!docs/images/*.png
+captures/
+*.npz

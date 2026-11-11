@@ -4,6 +4,57 @@ Developed and tested with Isaac Sim 6.0.1 (native ARM64, NVIDIA DGX Spark, Ubunt
 No physical camera is needed to run or configure this model.
 This is a documentation-informed sensor surrogate, not a reproduction of proprietary D4 firmware.
 
+## Screenshots
+
+**Running on the DGX Spark:** RViz on the left showing the organized point cloud, plus depth and RGB previews.
+Isaac Sim on the right, viewed through the simulated color camera.
+
+![Isaac Sim and RViz running the D435i simulation](docs/images/desktop.jpg)
+
+### Output streams
+
+One timestamp-matched set from every published topic, in the default `documented` mode.
+The orange target's top is exactly 1.0 m from the camera; the table is about 1.45 m away.
+
+![RGB, observation depth, aligned depth, ground truth, error map and point cloud](docs/images/outputs.png)
+
+How to read it:
+- **Black pixels are invalid depth (0)**, as a D435i reports them. Two kinds show up here:
+  - the band down the left edge: the right imager can't see that region;
+  - thin slivers beside each box: stereo shadows, where the box hides the table from one imager.
+- **Aligned depth sits slightly to the side of the boxes in RGB.** That's the 15 mm RGB-to-depth offset.
+- **The error map has the most noise on the floor (2.2 m) and the least on the target (1.0 m).**
+  Noise is applied in disparity space, so it grows with distance squared.
+- **The point cloud has dark holes beside the boxes.** Those are table areas the camera can't see.
+  It sees only the box tops, so their sides are missing. Invalid pixels are NaN, never filled in.
+
+### Observation-model variants
+
+Same scene and camera pose; only the observation model changes. Each row restarts the simulation with a different flag.
+
+![clean, documented and higher-noise variants](docs/images/variants.png)
+
+| Mode | Flag | Valid depth | RMS vs truth, whole image | RMS on the 1 m target |
+|---|---|---|---|---|
+| clean | `--observation-mode clean` | 100.0% | 0.03 mm (1 mm quantization only) | 0.0 mm |
+| documented (default) | none | 97.6% | 12.4 mm | 3.5 mm |
+| higher noise | `--noise-disparity 0.25` | 97.7% | 38.8 mm | 11.8 mm |
+
+These numbers come from a single frame of this synthetic scene. They describe the configured model, not the
+accuracy of a real D435i. The whole-image RMS is dominated by the floor, which is farther away.
+`clean` mode has no stereo visibility masking, so it shows no shadows or edge band.
+
+### Regenerating the figures
+
+With the simulation running, capture each mode, then render:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+export ROS_DOMAIN_ID=43 FASTDDS_DEFAULT_PROFILES_FILE=$PWD/fastdds.xml
+python3 tools/capture_frames.py captures/documented.npz   # repeat as clean.npz / noisy.npz with the flags above
+python3 tools/make_readme_figures.py captures docs/images  # numpy + Pillow only
+```
+
 ## Run
 
 ```bash
@@ -139,6 +190,8 @@ remaining sensor-domain or downstream task gap.
 | `validate.py` | Independent ROS subscriber checks |
 | `test_model.py` | Standalone plane tests of the depth model |
 | `rviz.sh`, `camera.rviz` | RViz view of RGB, depth and the colored cloud |
+| `tools/capture_frames.py` | Saves one timestamp-matched set of all output topics to `.npz` |
+| `tools/make_readme_figures.py` | Renders the README figures from those captures |
 | `fastdds.xml` | Shared-memory transport sized for full-resolution RGB-D and clouds |
 
 ## License
